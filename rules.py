@@ -61,7 +61,7 @@ class InformOwner(Rule):
 
 
 class AddFirstAidVideo(Rule):
-        """If the payment is for the video “Learning to Ski,” add a free “First Aid” video to the packing slip"""
+        """If the payment is for the video 'Learning to Ski', add a free 'First Aid' video to the packing slip"""
 
         def apply(self, payment):
                 actions = []

@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-* Python 3
+* Python (version 2 or 3)
 
 ## Running The Unit Test
 
