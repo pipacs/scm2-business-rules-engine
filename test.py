@@ -27,17 +27,37 @@ if __name__ == "__main__":
                 "Packing slip for Shipping", 
                 Payment(PhysicalProduct()), 
                 [GeneratePackingSlipForShipping()],
-                [DoGeneratePackingSlip("shipping")])        
+                [DoGeneratePackingSlip("shipping")]
+        )
+        testCase(
+                "No packing slip for Shipping", 
+                Payment(Membership("joe")), 
+                [GeneratePackingSlipForShipping()],
+                []
+        )        
         testCase(
                 "Packing slip for Royalty", 
                 Payment(Book()), 
                 [GeneratePackingSlipForRoyalty()],
-                [DoGeneratePackingSlip("royalty")])
+                [DoGeneratePackingSlip("royalty")]
+        )
+        testCase(
+                "No packing slip for Royalty", 
+                Payment(Video("barryLyndon")), 
+                [GeneratePackingSlipForRoyalty()],
+                []
+        )
         testCase(
                 "Activate membership",
                 Payment(Membership("owner@me.com")),
                 [ActivateMembership()],
                 [DoActivateMembership()]
+        )
+        testCase(
+                "Don't activate membership",
+                Payment(Upgrade("owner@me.com")),
+                [ActivateMembership()],
+                []
         )
         testCase(
                 "Apply upgrade",
@@ -46,10 +66,22 @@ if __name__ == "__main__":
                 [DoApplyUpgrade()]
         )
         testCase(
+                "Don't apply upgrade",
+                Payment(Membership("owner@me.com")),
+                [ApplyUpgrade()],
+                []
+        )
+        testCase(
                 "Inform owner of upgrade",
                 Payment(Upgrade("upgradeowner@me.com")),
                 [InformOwner()],
                 [DoInformOwner("upgradeowner@me.com")]
+        )
+        testCase(
+                "Don't inform owner of upgrade or membership",
+                Payment(Book()),
+                [InformOwner()],
+                []
         )
         testCase(
                 "Inform owner of membership",
@@ -58,14 +90,33 @@ if __name__ == "__main__":
                 [DoInformOwner("member@me.com")]
         )
         testCase(
-                "Add video 'First Aid' to the packing slip",
+                "Add video 'First Aid'",
                 Payment(Video("learningToSki")),
                 [AddFirstAidVideo()],
                 [DoAddFirstAidToPackingSlip]
         )
         testCase(
-                "Generate commission payment to agent",
+                "Don't add 'First Aid' to wrong video",
+                Payment(Video("theOrchestra")),
+                [AddFirstAidVideo()],
+                []
+        )
+        testCase(
+                "Don't add 'First Aid' to book",
+                Payment(Book()),
+                [AddFirstAidVideo()],
+                []
+        )
+        testCase(
+                "Commission payment to agent",
                 Payment(Video("learningToSki")),
                 [GenerateCommissionPaymentToAgent()],
                 [DoGenerateCommissionPaymentToAgent()]
         )
+        testCase(
+                "No commission payment to agent",
+                Payment(Upgrade("upgradeowner@me.com")),
+                [GenerateCommissionPaymentToAgent()],
+                []
+        )
+        
