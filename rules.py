@@ -48,3 +48,14 @@ class ApplyUpgrade(Rule):
                 if isinstance(payment.product, Upgrade):
                         actions.append(DoApplyUpgrade())
                 return actions
+
+
+class InformOwner(Rule):
+        """If the payment is for a membership or upgrade, e-mail the owner and inform them of the activation/upgrade"""
+
+        def apply(self, payment):
+                actions = []
+                if isinstance(payment.product, Upgrade) or isinstance(payment.product, Membership):
+                        actions.append(DoInformOwner(payment.product.owner))
+                return actions
+                

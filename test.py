@@ -45,3 +45,15 @@ if __name__ == "__main__":
                 [ApplyUpgrade()],
                 [DoApplyUpgrade()]
         )
+        testCase(
+                "Inform owner of upgrade",
+                Payment(Upgrade("upgradeowner@me.com")),
+                [InformOwner()],
+                [DoInformOwner("upgradeowner@me.com")]
+        )
+        testCase(
+                "Inform owner of membership",
+                Payment(Membership("member@me.com")),
+                [InformOwner()],
+                [DoInformOwner("member@me.com")]
+        )

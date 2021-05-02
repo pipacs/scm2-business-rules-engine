@@ -36,3 +36,15 @@ class DoApplyUpgrade(Action):
 
         def __eq__(self, other):
                 return isinstance(other, DoApplyUpgrade)
+
+
+class DoInformOwner(Action):
+        """Inform an owner about an activation/upgrade"""
+
+        def __init__(self, owner):
+                Action.__init__(self)
+                self.owner = owner
+
+        def __eq__(self, other):
+                return isinstance(other, DoInformOwner) and self.owner == other.owner
+
