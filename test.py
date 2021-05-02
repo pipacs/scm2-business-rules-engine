@@ -27,9 +27,21 @@ if __name__ == "__main__":
                 "Packing slip for Shipping", 
                 Payment(PhysicalProduct()), 
                 [GeneratePackingSlipForShipping()],
-                [PackingSlip("shipping")])        
+                [DoGeneratePackingSlip("shipping")])        
         testCase(
                 "Packing slip for Royalty", 
                 Payment(Book()), 
                 [GeneratePackingSlipForRoyalty()],
-                [PackingSlip("royalty")])
+                [DoGeneratePackingSlip("royalty")])
+        testCase(
+                "Activate membership",
+                Payment(Membership("owner@me.com")),
+                [ActivateMembership()],
+                [DoActivateMembership()]
+        )
+        testCase(
+                "Apply upgrade",
+                Payment(Upgrade("owner@me.com")),
+                [ApplyUpgrade()],
+                [DoApplyUpgrade()]
+        )

@@ -13,7 +13,7 @@ class Action:
                 return not self.__eq__(other)
 
 
-class PackingSlip(Action):
+class DoGeneratePackingSlip(Action):
         """Generate a packing slip for a department"""
 
         def __init__(self, department):
@@ -21,5 +21,18 @@ class PackingSlip(Action):
              self.department = department   
 
         def __eq__(self, other):
-                return isinstance(other, PackingSlip) and self.department == other.department
+                return isinstance(other, DoGeneratePackingSlip) and self.department == other.department
 
+
+class DoActivateMembership(Action):
+        """Activate a membership"""
+
+        def __eq__(self, other):
+                return isinstance(other, DoActivateMembership)
+
+
+class DoApplyUpgrade(Action):
+        """Apply an upgrade to a membership"""
+
+        def __eq__(self, other):
+                return isinstance(other, DoApplyUpgrade)

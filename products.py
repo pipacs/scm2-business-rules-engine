@@ -23,7 +23,7 @@ class Membership(Product):
 
 
 class Upgrade(Product):
-        """An uprgade to a membership"""
+        """An upgrade to a membership"""
 
         def __init__(self, owner):
                 self.owner = owner

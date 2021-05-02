@@ -16,7 +16,7 @@ class GeneratePackingSlipForShipping(Rule):
         def apply(self, payment):
                 actions = []
                 if isinstance(payment.product, PhysicalProduct):
-                        actions.append(PackingSlip("shipping"))
+                        actions.append(DoGeneratePackingSlip("shipping"))
                 return actions
 
 
@@ -26,5 +26,25 @@ class GeneratePackingSlipForRoyalty(Rule):
         def apply(self, payment):
                 actions = []
                 if isinstance(payment.product, Book):
-                        actions.append(PackingSlip("royalty"))
+                        actions.append(DoGeneratePackingSlip("royalty"))
+                return actions
+
+
+class ActivateMembership(Rule):
+        """If the payment is for a membership, activate that membership"""
+
+        def apply(self, payment):
+                actions = []
+                if isinstance(payment.product, Membership):
+                        actions.append(DoActivateMembership())
+                return actions
+
+
+class ApplyUpgrade(Rule):
+        """If the payment is an upgrade to a membership, apply the upgrade"""
+
+        def apply(self, payment):
+                actions = []
+                if isinstance(payment.product, Upgrade):
+                        actions.append(DoApplyUpgrade())
                 return actions
