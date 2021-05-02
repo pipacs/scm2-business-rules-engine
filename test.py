@@ -27,4 +27,9 @@ if __name__ == "__main__":
                 "Packing slip for Shipping", 
                 Payment(PhysicalProduct()), 
                 [GeneratePackingSlipForShipping()],
-                [PackingSlipForShipping()])
+                [PackingSlip("shipping")])        
+        testCase(
+                "Packing slip for Royalty", 
+                Payment(Book()), 
+                [GeneratePackingSlipForRoyalty()],
+                [PackingSlip("royalty")])

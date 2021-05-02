@@ -3,6 +3,9 @@
 class Action:
         """Base action type"""
 
+        def __init__(self):
+                pass
+
         def __eq__(self, other):
                 return false  # Can't compare abstract Actions
 
@@ -10,10 +13,13 @@ class Action:
                 return not self.__eq__(other)
 
 
-class PackingSlipForShipping(Action):
-        """Generate a packing slip for Shipping"""
+class PackingSlip(Action):
+        """Generate a packing slip for a department"""
+
+        def __init__(self, department):
+             Action.__init__(self)
+             self.department = department   
 
         def __eq__(self, other):
-                return isinstance(other, PackingSlipForShipping)
-
+                return isinstance(other, PackingSlip) and self.department == other.department
 

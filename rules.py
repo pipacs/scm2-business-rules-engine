@@ -16,5 +16,15 @@ class GeneratePackingSlipForShipping(Rule):
         def apply(self, payment):
                 actions = []
                 if isinstance(payment.product, PhysicalProduct):
-                        actions.append(PackingSlipForShipping())
+                        actions.append(PackingSlip("shipping"))
+                return actions
+
+
+class GeneratePackingSlipForRoyalty(Rule):
+        """If the payment is for a book, create a duplicate packing slip for the royalty department"""
+
+        def apply(self, payment):
+                actions = []
+                if isinstance(payment.product, Book):
+                        actions.append(PackingSlip("royalty"))
                 return actions
