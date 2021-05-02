@@ -58,4 +58,23 @@ class InformOwner(Rule):
                 if isinstance(payment.product, Upgrade) or isinstance(payment.product, Membership):
                         actions.append(DoInformOwner(payment.product.owner))
                 return actions
-                
+
+
+class AddFirstAidVideo(Rule):
+        """If the payment is for the video “Learning to Ski,” add a free “First Aid” video to the packing slip"""
+
+        def apply(self, payment):
+                actions = []
+                if isinstance(payment.product, Video) and payment.product.sku == "learningToSki":
+                        actions.append(DoAddFirstAidToPackingSlip)
+                return actions
+
+
+class GenerateCommissionPaymentToAgent(Rule):
+        """If the payment is for a physical product or a book, generate a commission payment to the agent"""
+
+        def apply(self, payment):
+                actions = []
+                if isinstance(payment.product, PhysicalProduct):
+                        actions.append(DoGenerateCommissionPaymentToAgent())
+                return actions

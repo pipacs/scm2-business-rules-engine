@@ -48,3 +48,16 @@ class DoInformOwner(Action):
         def __eq__(self, other):
                 return isinstance(other, DoInformOwner) and self.owner == other.owner
 
+
+class DoAddFirstAidToPackingSlip(Action):
+        """Add the video "First Aid" to the packing slip"""
+
+        def __eq__(self, other):
+                return isinstance(other, DoAddFirstAidToPackingSlip)
+
+
+class DoGenerateCommissionPaymentToAgent(Action):
+        """Generate commission payment to the agent"""
+
+        def __eq__(self, other):
+                return isinstance(other, DoGenerateCommissionPaymentToAgent)

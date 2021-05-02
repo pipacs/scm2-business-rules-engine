@@ -57,3 +57,15 @@ if __name__ == "__main__":
                 [InformOwner()],
                 [DoInformOwner("member@me.com")]
         )
+        testCase(
+                "Add video 'First Aid' to the packing slip",
+                Payment(Video("learningToSki")),
+                [AddFirstAidVideo()],
+                [DoAddFirstAidToPackingSlip]
+        )
+        testCase(
+                "Generate commission payment to agent",
+                Payment(Video("learningToSki")),
+                [GenerateCommissionPaymentToAgent()],
+                [DoGenerateCommissionPaymentToAgent()]
+        )
