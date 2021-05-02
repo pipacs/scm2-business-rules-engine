@@ -1,15 +1,6 @@
 # Unit test runner for SCM Coding Test 2: Business Rules Engine
 
-class RulesEngine:
-        def __init__(self, rules):
-                self.rules = rules 
-
-        def applyRules(self, payment):
-                actions = []
-                for rule in self.rules:
-                        actions += rule.apply(payment)
-                return actions
-
+from rules_engine import RulesEngine
 
 class Rule:
         def apply(self, payment):
@@ -60,7 +51,7 @@ def testCase(name, payment, rules, expectedActions):
         rulesEngine = RulesEngine(rules)
         actualActions = rulesEngine.applyRules(payment)
         if expectedActions == actualActions:
-                print(name, "passed")
+                print(name, "PASSED")
         else:
                 print(name, "FAILED: Expected", expectedActions, "Actual", actualActions)
 
