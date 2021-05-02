@@ -4,11 +4,7 @@ from rules_engine import RulesEngine
 from rules import *
 from products import *
 from actions import *
-
-
-class Payment:
-        def __init__(self, product):
-                self.product = product
+from payment import Payment
 
 
 def testCase(name, payment, rules, expectedActions):
@@ -119,4 +115,3 @@ if __name__ == "__main__":
                 [GenerateCommissionPaymentToAgent()],
                 []
         )
-        
