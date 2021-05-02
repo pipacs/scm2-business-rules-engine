@@ -1,44 +1,9 @@
 # Unit test runner for SCM Coding Test 2: Business Rules Engine
 
 from rules_engine import RulesEngine
-
-class Rule:
-        def apply(self, payment):
-                return []
-
-
-class GeneratePackingSlipForShipping(Rule):
-        def apply(self, payment):
-                actions = []
-                if isinstance(payment.product, PhysicalProduct):
-                        actions.append(PackingSlipForShipping())
-                return actions
-
-
-class Action:
-        def __eq__(self, other):
-                return false  # Can't compare abstract Actions
-
-        def __ne__(self, other):
-                return not self.__eq__(other)
-
-
-class PackingSlipForShipping(Action):
-        def __eq__(self, other):
-                return isinstance(other, PackingSlipForShipping)
-
-
-class Payment:
-        def __init__(self, product):
-                self.product = product
-
-
-class Product:
-        pass
-
-
-class PhysicalProduct(Product):
-        pass
+from rules import *
+from products import *
+from actions import *
 
 
 class Payment:
