@@ -17,13 +17,13 @@ python3 test.py
 
 The business rules engine (```RulesEngine```) type is implemented in _rules_engine.py_. 
 
-It has a list of ```Rule```s and an ```apply``` method which applies all rules to a given payment, and returns zero or more ```Action```s.
+It has a list of ```Rule```s and an ```apply()``` method which applies all rules to a given payment, and returns zero or more ```Action```s.
 
 ### Business Rules
 
 A business rule (```Rule```), when applied to a payment, generates zero or more ```Action```s.
 
-The business rules class hierarchy is in _rules.py_. To extend the system with new rules, define them here and append them to the ```RulesEngine``` initializer parameter list
+The business rules class hierarchy is in _rules.py_. To extend the system with new rules, define them here and append them to the ```RulesEngine``` initializer parameter list.
 
 ### Actions
 
